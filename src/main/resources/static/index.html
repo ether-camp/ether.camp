@@ -13,6 +13,10 @@
 		<link href="css/style.css" rel="stylesheet" type="text/css">
 		<link rel="icon" href="favicon.ico">
 
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="javascript/app.js"></script>
+
+
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 
 		<script src="bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
@@ -24,7 +28,9 @@
 		<!-- SITE TITLE -->
 		<title>Ether Camp</title>
 	</head>
-	<body>
+
+
+	<body  ng-app="hackEtherCampApp"  ng-controller="generalController">
 
 		<!-- OVERLAY -->
 		<div class="overlay">
@@ -74,10 +80,14 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<form name="signup" action="#">
-							<p class="sm">Sign up to our newsletter for updates</p>
-							<input type="text" name="email" value="" class="form-control">
-							<input type="submit" name="submit" value="Sign up" class="submit">
+						<form name="signup" novalidate>
+
+							<p class="sm">Ask for our Slack signup</p>
+							<input type="text" name="email" value="" class="form-control"
+								   ng-model="user.email">
+							<input type="submit" name="submit" value="Invite Me" class="submit"
+								   ng-click="invite(user)">
+
 						</form>
 					</div>
 				</div>
