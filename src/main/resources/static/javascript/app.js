@@ -10,6 +10,13 @@ function generalController($scope, $http){
 
         console.log(user);
 
+        $("#emailField").fadeOut( "slow", function() {
+
+            $("#inviteResponse").text("Processing");
+            $("#responsePanel").fadeIn( "slow");
+
+        });
+
         $http({
             method: 'POST',
             url: '/invite-slack',
@@ -18,6 +25,8 @@ function generalController($scope, $http){
             },
             headers: {}
         }).success( function(response){
+
+            $("#inviteResponse").text("Check your email the invite should be waiting for you");
 
             console.log("the registration process succefully started")
         });

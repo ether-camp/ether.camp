@@ -83,7 +83,13 @@
 						<form name="signup" novalidate>
 
 							<p class="sm">Ask for our Slack invite</p>
-							<input type="text" name="email" value="" class="form-control"
+
+							<div id="responsePanel" style="display:none;height:50px">
+								<label id="inviteResponse"  style="padding-top: 20px"></label>
+								<br id="lineBreak" />
+							</div>
+
+							<input id="emailField" type="text" name="email" value="" class="form-control"
 								   ng-model="user.email">
 							<input type="submit" name="submit" value="Invite Me" class="submit"
 								   ng-click="invite(user)">
