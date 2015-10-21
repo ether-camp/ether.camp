@@ -3,6 +3,7 @@
   "dependencies": {
     "jquery": "~2.1.1",
 
+    
     "jquery.countdown": "2.1.0",
     "momentjs": "2.10.6",
     "moment-timezone": "0.4.1"
