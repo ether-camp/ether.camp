@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar build/libs/ether.camp.jar --server.port=$PORT
