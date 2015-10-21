@@ -10,7 +10,8 @@ install: ./gradlew assemble --refresh-dependencies
 cache:
   directories:
   - $HOME/.gradle
-deploy:provider: heroku
+deploy:
+  provider: heroku
   buildpack: gradle
   app: ether-camp
   api_key:
