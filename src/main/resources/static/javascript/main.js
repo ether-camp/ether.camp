@@ -1,7 +1,7 @@
 $(function() {
 
 
-    var dueDate = moment.tz("2015-11-10 10:00", "Europe/London");
+    var dueDate = moment.tz("2015-12-01 10:00", "Europe/London");
 
 
     //Wednsday 5.7.2015
