@@ -38,19 +38,29 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xs-12">
-						<h1>&lt; ether.camp &gt;</h1>
+						<h1>&lt; ether.camp &gt;
+
+							<span style="color:#f7dd1e;">and</span>
+
+							<img src="./img/wanxiang.png" style="width:100px; height: 30px" />
+						</h1>
+
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 no-padding">
-						<h2>Ethereum is our land to explore and conquer.</h2>
+						<h2>加入我们的上海编码事件</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<p><strong class="gray-text">Join us on</strong></p>
+						<p>
+
+
+						</p>
 						<p class="gray-text">
-							<a href="http://hack.ether.camp" style="color: white" >First De-Centralized Hackathon  </a>
+							<a href="http://www.blockchainlabs.org/blockchain-hackthon-en/" style="color: white" >
+								点击查看更多信息  </a>
 						</p>
 						<p><strong> <div id="due-date">  ---  </div>  </strong></p>
 					</div>
@@ -83,7 +93,7 @@
 					<div class="col-xs-12">
 						<form name="signup" novalidate>
 
-							<p class="sm">Ask for our Slack invite</p>
+							<p class="sm">问到这里参加</p>
 
 							<div id="responsePanel" style="display:none;height:50px">
 								<label id="inviteResponse"  style="padding-top: 20px"></label>
@@ -91,8 +101,10 @@
 							</div>
 
 							<input id="emailField" type="text" name="email" value="" class="form-control"
-								   ng-model="user.email">
-							<input type="submit" name="submit" value="Invite Me" class="submit"
+								   ng-model="user.email"
+								   placeholder="my@email.com"
+									>
+							<input type="submit" name="submit" value="邀请我" class="submit"
 								   ng-click="invite(user)">
 
 						</form>
