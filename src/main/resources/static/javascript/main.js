@@ -5,7 +5,8 @@ $(function() {
 
 
     //Wednsday 5.7.2015
-    $('#due-date').text(dueDate.format("dddd D-MMM-YYYY HH:mm"));
+    $('#due-date').text("");
+    //$('#due-date').text(dueDate.format("dddd D-MMM-YYYY HH:mm"));
 
 
     $('#countdown').countdown(dueDate.toDate(),  function(event) {
