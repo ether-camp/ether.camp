@@ -37,7 +37,7 @@ public class SlackRestController {
         RestTemplate restTemplate = new RestTemplate();
         String rpcEnd = String.format(
           "https://ether-camp-friends.slack.com/api/users.admin.invite?set_active=true&token=%s&email=%s",
-                "xoxp-12929453824-12932086162-19285839428-e4df7e2b60",
+                "xoxp-12929453824-12932086162-52495658451-08ec815eb8",
                 inviteRequest.getEmail()
                 );
 
