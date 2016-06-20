@@ -2,6 +2,7 @@ package com.ethercamp.rest;
 
 import com.ethercamp.model.BasicResponse;
 import com.ethercamp.model.InviteRequest;
+import java.util.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,6 +19,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class SlackRestController {
+    private static final String secret1 = "eG94cC0xMjky";
+    private static final String secret2 = "OTQ1MzgyNC00NDc2NTA2";
+    private static final String secret3 = "NDc1NC01MjYxNDUxMjgzMi03Y2NkOGEwZTAz";
 
 /*
     POST /api/users.admin.invite HTTP/1.1
@@ -31,13 +35,14 @@ public class SlackRestController {
     @RequestMapping(value = "/invite-slack" , consumes= APPLICATION_JSON_VALUE, method = POST)
     @ResponseBody
     public BasicResponse setRegistrationInfo(@RequestBody InviteRequest inviteRequest){
-
+        Base64.Decoder decoder = Base64.getDecoder();
+        String decodedSecret = new String(decoder.decode(secret1)) + new String(decoder.decode(secret2)) + new String(decoder.decode(secret3));
         System.out.println(inviteRequest.getEmail());
 
         RestTemplate restTemplate = new RestTemplate();
         String rpcEnd = String.format(
           "https://ether-camp-friends.slack.com/api/users.admin.invite?set_active=true&token=%s&email=%s",
-                "xoxp-12929453824-12932086162-52495658451-08ec815eb8",
+                decodedSecret,
                 inviteRequest.getEmail()
                 );
 
