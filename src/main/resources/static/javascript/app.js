@@ -29,7 +29,12 @@ function generalController($scope, $http){
             $("#inviteResponse").text("Check your email the invite should be waiting for you");
 
             console.log("the registration process succefully started")
-        });
+        }).error(function (data, status, headers, config) {
+            if (status == 409) {
+                $("#inviteResponse").text("Your email address is already registered. Please check it for the invite.");
+                console.log("an attempt to use already invited email")
+            }
+        });  
     };
 
 

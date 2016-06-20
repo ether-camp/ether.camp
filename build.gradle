@@ -41,6 +41,7 @@ repositories {
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 }
 
 task stage {
