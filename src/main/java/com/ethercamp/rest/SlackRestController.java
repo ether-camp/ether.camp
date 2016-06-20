@@ -1,6 +1,7 @@
 package com.ethercamp.rest;
 
 import com.ethercamp.model.InviteRequest;
+import com.google.gson.Gson;
 import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -67,7 +68,7 @@ public class SlackRestController {
             System.out.println(response.getBody());
         }
 
-        return ResponseEntity.ok("Thanks for joining our adventure");
+        return ResponseEntity.ok(new Gson().toJson("Thanks for joining our adventure"));
     }
 
 
