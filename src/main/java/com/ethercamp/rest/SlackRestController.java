@@ -60,8 +60,11 @@ public class SlackRestController {
         if (response != null) {
             Map<String, Object> json = new GsonJsonParser().parseMap(response.getBody());
             if (!(boolean)json.getOrDefault("ok", false)) {
-                if (json.getOrDefault("error", "").equals(ALREADY_INVITED_ERROR)) {
+                String error = (String)json.getOrDefault("error", "");
+                if (error.equals(ALREADY_INVITED_ERROR)) {
                     return new ResponseEntity<>(HttpStatus.CONFLICT);
+                } else {
+                    return new ResponseEntity<>(new Gson().toJson(error), HttpStatus.SERVICE_UNAVAILABLE);
                 }
             }
 

@@ -102,9 +102,9 @@
 							<input id="emailField" type="text" name="email" value="" class="form-control"
 								   ng-model="user.email"
 								   placeholder="my@email.com"
-									>
+								   required>
 							<input type="submit" name="submit" value="Invite Me" class="submit"
-								   ng-click="invite(user)">
+								   ng-click="signup.$valid && invite(user)">
 
 						</form>
 					</div>

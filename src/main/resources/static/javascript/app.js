@@ -9,12 +9,12 @@ function generalController($scope, $http){
     $scope.invite = function(user) {
 
         console.log(user);
-
+        var gotAnswer = false;
         $("#emailField").fadeOut( "slow", function() {
-
-            $("#inviteResponse").text("Processing");
-            $("#responsePanel").fadeIn( "slow");
-
+            if (!gotAnswer) {
+                $("#inviteResponse").text("Processing");
+                $("#responsePanel").fadeIn( "slow");
+            }
         });
 
         $http({
@@ -24,17 +24,29 @@ function generalController($scope, $http){
                 email: $scope.user.email
             },
             headers: {}
-        }).success( function(response){
-
-            $("#inviteResponse").text("Check your email the invite should be waiting for you");
+        }).success( function(response) {
+            gotAnswer = true;
+            $("#responsePanel").fadeOut("slow", function() {
+                $("#inviteResponse").text("Check your email the invite should be waiting for you");
+                $("#responsePanel").fadeIn( "slow");
+            });
 
             console.log("the registration process succefully started")
         }).error(function (data, status, headers, config) {
-            if (status == 409) {
-                $("#inviteResponse").text("Your email address is already registered. Please check it for the invite.");
-                console.log("an attempt to use already invited email")
-            }
-        });  
+                gotAnswer = true;
+
+                $("#responsePanel").fadeOut("slow", function() {
+                    if (status == 409) {
+                        $("#inviteResponse").text("Your email address is already registered. Please check it for the invite.");
+                        console.log("an attempt to use already invited email");
+                    } else {
+                        $("#inviteResponse").text("We got some problems with inviting you now. Please try again soon.");
+                        console.log("Unknown error: " + data);
+                    }
+
+                    $("#responsePanel").fadeIn("slow");
+                });
+        });
     };
 
 
