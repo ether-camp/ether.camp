@@ -94,17 +94,23 @@
 
 							<p class="sm">Join Our Slack</p>
 
-							<div id="responsePanel" style="display:none;height:50px">
-								<label id="inviteResponse"  style="padding-top: 20px"></label>
+							<div id="responsePanel" style="display:none; height: 83px;">
+								<div>
+									<div class="rounded-notification">
+										<label id="inviteResponse"  style="padding-top: 20px;"></label>
+									</div>
+								</div>
 								<br id="lineBreak" />
 							</div>
 
-							<input id="emailField" type="text" name="email" value="" class="form-control"
-								   ng-model="user.email"
-								   placeholder="my@email.com"
-								   required>
-							<input type="submit" name="submit" value="Invite Me" class="submit"
-								   ng-click="signup.$valid && invite(user)">
+							<div id="inputs">
+								<input id="emailField" type="text" name="email" value="" class="form-control"
+									   ng-model="user.email"
+									   placeholder="my@email.com"
+									   required>
+								<input type="submit" name="submit" value="Invite Me" class="submit"
+									   ng-click="signup.$valid && invite(user)">
+							</div>
 
 						</form>
 					</div>

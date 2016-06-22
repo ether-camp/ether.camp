@@ -10,7 +10,7 @@ function generalController($scope, $http){
 
         console.log(user);
         var gotAnswer = false;
-        $("#emailField").fadeOut( "slow", function() {
+        $("#inputs").fadeOut( "slow", function() {
             if (!gotAnswer) {
                 $("#inviteResponse").text("Processing");
                 $("#responsePanel").fadeIn( "slow");
