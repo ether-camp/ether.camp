@@ -1969,3 +1969,12 @@ p
   background: rgb(05, 06, 06);
   background: rgba(05, 06, 06, .6);
 }
+
+.link-yellow {
+  color: #F6DC1E
+}
+
+.link-yellow:hover, .link-yellow:focus {
+  color: #F6DC1E
+  outline: none
+}
