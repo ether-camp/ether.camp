@@ -3,7 +3,7 @@
 /* App Module */
 var hackEtherCampApp = angular.module('hackEtherCampApp');
 
-function generalController($scope, $http, $sce, CheckInboxText){
+function generalController($scope, $http, $sce, $timeout, CheckInboxText){
 
         $scope.invite = function(user) {
 
@@ -31,8 +31,9 @@ function generalController($scope, $http, $sce, CheckInboxText){
                 gotAnswer = true;
 
                 $("#responsePanel").fadeOut("slow", function() {
-                    $scope.$apply(function() {
-                        $scope.responseText = $sce.trustAsHtml(checkInbox);
+                    var response = $sce.trustAsHtml(checkInbox);
+                    $timeout(function() {
+                        $scope.responseText = response;
                     });
 
                     $("#responsePanel").fadeIn( "slow");
@@ -42,16 +43,17 @@ function generalController($scope, $http, $sce, CheckInboxText){
             }).error(function (data, status, headers, config) {
                     gotAnswer = true;
                     var response = null;
+                    if (status == 409) {
+                        response = $sce.trustAsHtml(alreadyInvitedMsg);
+                        console.log("an attempt to use already invited email");
+                    } else {
+                        response = $sce.trustAsHtml("We got some problems with inviting you now. Please try again soon.");
+                        console.log("Unknown error: " + data);
+                    }
 
                     $("#responsePanel").fadeOut("slow", function() {
-                        $scope.$apply(function() {
-                            if (status == 409) {
-                                $scope.responseText = $sce.trustAsHtml(alreadyInvitedMsg);
-                                console.log("an attempt to use already invited email");
-                            } else {
-                                $scope.responseText = $sce.trustAsHtml("We got some problems with inviting you now. Please try again soon.");
-                                console.log("Unknown error: " + data);
-                            }
+                        $timeout(function() {
+                            $scope.responseText = response;
                         });
                         $("#responsePanel").fadeIn("slow");
                     });
@@ -60,6 +62,6 @@ function generalController($scope, $http, $sce, CheckInboxText){
 }
 
 
-hackEtherCampApp.controller('generalController', ['$scope', '$http', '$sce', 'CheckInboxText', generalController]);
+hackEtherCampApp.controller('generalController', ['$scope', '$http', '$sce', '$timeout', 'CheckInboxText', generalController]);
 
 
