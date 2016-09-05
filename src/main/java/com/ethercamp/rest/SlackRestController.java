@@ -23,6 +23,7 @@ public class SlackRestController {
     private static final String secret2 = "OTQ1MzgyNC00NDc2NTA2";
     private static final String secret3 = "NDc1NC01MjYxNDUxMjgzMi03Y2NkOGEwZTAz";
     private static final String ALREADY_INVITED_ERROR = "already_invited";
+    public static final String ALREADY_IN_TEAM_ERROR = "already_in_team";
 
 /*
     POST /api/users.admin.invite HTTP/1.1
@@ -63,6 +64,8 @@ public class SlackRestController {
                 String error = (String)json.getOrDefault("error", "");
                 if (error.equals(ALREADY_INVITED_ERROR)) {
                     return new ResponseEntity<>(HttpStatus.CONFLICT);
+                } else if (error.equals(ALREADY_IN_TEAM_ERROR)) {
+                    return new ResponseEntity(new Gson().toJson("You are already on our Slack. Please check it <a class=\"link-yellow\" href=\"https://ether-camp-friends.slack.com\">here</a>."), HttpStatus.CONFLICT);
                 } else {
                     return new ResponseEntity<>(new Gson().toJson(error), HttpStatus.SERVICE_UNAVAILABLE);
                 }

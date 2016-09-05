@@ -44,8 +44,12 @@ function generalController($scope, $http, $sce, $timeout, CheckInboxText){
                     gotAnswer = true;
                     var response = null;
                     if (status == 409) {
-                        response = $sce.trustAsHtml(alreadyInvitedMsg);
-                        console.log("an attempt to use already invited email");
+                        if (data) {
+                            response = $sce.trustAsHtml(data);
+                        } else {
+                            response = $sce.trustAsHtml(alreadyInvitedMsg);
+                            console.log("an attempt to use already invited email");
+                        }
                     } else {
                         response = $sce.trustAsHtml("We got some problems with inviting you now. Please try again soon.");
                         console.log("Unknown error: " + data);
