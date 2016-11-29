@@ -1811,6 +1811,63 @@ a:focus
 	padding:56px 16px 16px 16px;
 }
 
+.overlay-black
+{
+	border: 1px;
+	border-style: solid;
+	border-color: #F6DC1E;
+	display: block;
+	max-width: 740px;
+	min-height: 180px;
+	max-height: 270px;
+	position: relative;
+	text-align: center;
+	margin: 30px auto 0 auto;
+	background-color: #1A1A1A;
+	padding: 40px 16px 16px 16px;
+}
+
+.button-yellow
+{
+	background-color: #F6DC1E;
+	border-radius: 0;
+	border: none;
+	color: #1A1A1A;
+	font-weight: 500;
+	height: 25px;
+	margin-top: 5px;
+	width: 200px;
+}
+
+.hackathon-desc
+{
+	padding-top: 10px;
+	padding-left: 20px;
+	text-align: left;
+	width: 400px;
+}
+
+.hackathon-desc.headline
+{
+	color: #F6DC1E;
+	font-size: 20px;
+}
+
+.hackathon-links
+{
+	position: absolute;
+	right: 0px;
+	text-align: right;
+}
+
+@media (min-height:741px)
+{
+	.overlay-black
+	{
+		min-height: 180px;
+	}
+}
+
 @media (max-height:710px)
 {
 	.overlay
@@ -1819,11 +1876,48 @@ a:focus
 	}
 }
 
+@media (max-width:440px)
+{
+	.overlay-black
+	{
+		min-height: 280px;
+	}
+
+	.hackathon-links
+	{
+		padding-top: 15px;
+		text-align: center;
+	}
+
+	.hackathon-desc
+	{
+		padding-left: 0;
+		width: inherit;
+	}
+}
+
 @media (max-width:320px)
 {
 	.overlay
 	{
 		margin-top:60px;
+	}
+
+	.overlay-black
+	{
+		min-height: 300px;
+	}
+
+	.hackathon-links
+	{
+		padding-top: 15px;
+		text-align: center;
+	}
+
+	.hackathon-desc
+	{
+		padding-left: 0;
+		width: inherit;
 	}
 }
 
